@@ -29,7 +29,7 @@ int fastest_student(Student objects[12]) {
                 if ( objects[i].get_grade() > 4) {
                         positive_grades.push_back(i);
                 }
-        }
+        } // getting positive grade values and storing in vector
 
         for(i=0; i <= positive_grades.size(); i++) {
                  student_time = objects[positive_grades[i]].get_time();
@@ -37,25 +37,25 @@ int fastest_student(Student objects[12]) {
                 if( timee > student_time ) {
                         timee = student_time;
                 }
-         } 
+         } // getting time of students with positive grades 
 
         for(i=0; i<10; i++) {
                 if (objects[i].get_time() == timee) {
                         fastest_student_index = i;
                 }
 
-        }
+        } // finding fastest student index in array
 
 	positive_grades.clear();
 
-	return fastest_student_index;
+	return fastest_student_index; // returning fastest student index
 
 
 }
 
 int main() {
 
-	Student objects[10];
+	Student first_group[10];
 	Student second_group[12];
 
 	cout << " * * * ENTERING FIRST GROUP DATA * * * " << endl;
@@ -67,8 +67,8 @@ int main() {
 		cout << "Enter " << i+1 << " Student time in minutes: ";
 		cin >> times;
 
-		objects[i].set_time(times);
-		objects[i].set_grade(grades);
+		first_group[i].set_time(times);
+		first_group[i].set_grade(grades);
 	}
 	
 	cout << " * * * ENTERING SECOND GROUP DATA * * * " << endl;
@@ -85,19 +85,20 @@ int main() {
         }
 	
 
-	int f_grp_fastest=fastest_student(objects);
-	int s_grp_fastest=fastest_student(second_group);
+	int f_grp_fastest=fastest_student(first_group); //first group fastest student index
+	int s_grp_fastest=fastest_student(second_group); //second group fastest student index
 
-	if (objects[f_grp_fastest].get_time() > second_group[s_grp_fastest].get_time()) {
+	if (first_group[f_grp_fastest].get_time() > second_group[s_grp_fastest].get_time()) {
 		cout << "The fastest is the student from second group No. " 
 		<< s_grp_fastest+1 << " Time: " << second_group[s_grp_fastest].get_time()
 	       	<< "min." << endl;
 			}
 	else {
 		cout << "The fastest is the student from first group No. "
-                << f_grp_fastest+1 << " Time: " << objects[f_grp_fastest].get_time()
+                << f_grp_fastest+1 << " Time: " << first_group[f_grp_fastest].get_time()
 	       	<< "min." << endl;
 			}
+	// finding fastest student from 2 groups by comparing speeds
 
 	return 0;
 }
